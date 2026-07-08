@@ -307,20 +307,154 @@
         .project-link:hover {
             text-decoration: underline;
         }
-
-        .contact {
+				
+		.dashboard-img {
+			object-position: top; /* S'appliquera uniquement aux images ayant la classe dashboard-img */
+		}
+				.contact {
             background: white;
             border-radius: 20px;
             text-align: center;
             padding: 50px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.05);
         }
-
-        .contact p {
+		.project-card:not(:first-of-type) .project-thumb {
+			object-position: top;
+		}
+				.contact p {
             margin-bottom: 15px;
             font-size: 1.1rem;
         }
+		
+		/* Section Compétences */
+		.skills-section {
+			padding: 60px 20px;
+			background-color: #0f172a; /* Fond bleu très sombre comme sur l'image */
+			color: #ffffff;
+		}
 
+		.skills-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+			gap: 20px;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		/* Style des Cartes */
+		.skill-card {
+			background-color: #1e293b; /* Couleur de la carte */
+			border: 1px solid #334155;
+			border-radius: 12px;
+			padding: 30px 25px;
+			transition: transform 0.3s ease, border-color 0.3s ease;
+		}
+
+		.skill-card:hover {
+			transform: translateY(-5px);
+			border-color: #38bdf8; /* Lueur bleue au survol */
+		}
+
+		/* Icônes */
+		.skill-icon {
+			background-color: rgba(56, 189, 248, 0.1);
+			color: #38bdf8; /* Couleur cyan de l'image */
+			width: 50px;
+			height: 50px;
+			border-radius: 10px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 1.5rem;
+			margin-bottom: 20px;
+			border: 1px solid rgba(56, 189, 248, 0.2);
+		}
+
+		/* Typographies */
+		.skill-card h3 {
+			font-size: 1.2rem;
+			margin-bottom: 12px;
+			font-weight: 600;
+		}
+
+		.skill-card p {
+			color: #94a3b8; /* Texte secondaire plus clair */
+			font-size: 0.95rem;
+			line-height: 1.5;
+		}
+		
+		/* Applique le fond sombre sur la section des chiffres ET des projets */
+		.stats-section, 
+		.projects-section {
+			background-color: #0f172a; /* Le bleu très sombre du modèle bento */
+			color: #ffffff;            /* Force le texte en blanc pour qu'il soit lisible */
+			padding: 60px 20px;        /* Garde un bel espace aéré en haut et en bas */
+		}
+
+		/* Si tes cartes de projets ont un fond, on leur donne la couleur du modèle bento */
+		.project-card {
+			background-color: #1e293b; /* Bleu ardoise légèrement plus clair pour faire ressortir les cartes */
+			border: 1px solid #334155; /* Bordure discrète */
+			border-radius: 12px;
+			padding: 20px;
+			transition: transform 0.3s ease;
+		}
+
+		/* Optionnel : si tu as des cartes aussi pour tes chiffres, applique-leur le même style */
+		.stat-card {
+			background-color: #1e293b;
+			border: 1px solid #334155;
+			border-radius: 12px;
+			padding: 20px;
+		}
+
+		/* Cible le texte de description à l'intérieur de tes cartes de projet */
+		.project-card p {
+			color: #cbd5e1; /* 👈 Un gris très clair/blanc cassé (Slate 300) parfait pour le contraste */
+			font-size: 0.95rem;
+			line-height: 1.6; /* Donne un peu d'air entre les lignes pour améliorer la lisibilité */
+		}
+
+		/* Si tu as des puces (comme sur la troisième carte), applique-leur la même couleur */
+		.project-card ul li {
+			color: #cbd5e1;
+			font-size: 0.95rem;
+			margin-bottom: 8px;
+		}
+		.stats {
+		  display: flex;
+		  gap: 20px;
+		  flex-wrap: wrap;
+		}
+
+		.stat-card {
+		  background-color: #1b2333;
+		  border-radius: 10px;
+		  padding: 25px 30px;
+		  flex: 1;
+		  min-width: 220px;
+		  text-align: center;
+		}
+
+		.stat-card i {
+		  font-size: 24px;
+		  color: #3b6ef6;
+		  margin-bottom: 10px;
+		  display: block;
+		}
+
+		.stat-card h3 {
+		  color: #3b6ef6;
+		  font-size: 28px;
+		  margin: 5px 0;
+		}
+
+		.stat-card p {
+		  color: #9aa3b2;
+		  font-size: 14px;
+		  margin: 0;
+		}
+				
         .contact i {
             color: #2563eb;
             margin-right: 10px;
@@ -421,19 +555,36 @@
     </div>
 </section>
 
-<section id="skills">
-    <h2 class="section-title">Compétences</h2>
-    <div class="skills">
-        <div class="skill">SQL Server</div>
-        <div class="skill">Oracle</div>
-        <div class="skill">PostgreSQL</div>
-        <div class="skill">Airflow</div>
-        <div class="skill">Python</div>
-        <div class="skill">Power BI</div>
-        <div class="skill">ETL / ELT</div>
-        <div class="skill">Data Warehouse</div>
-        <div class="skill">Data Modeling</div>
-        <div class="skill">Git</div>
+<section id="skills" class="skills-section">
+    <h2 class="section-title">Mes Compétences</h2>
+    <div class="skills-grid">
+        <!-- Carte 1: SQL -->
+        <div class="skill-card">
+            <div class="skill-icon"><i class="fa-solid fa-database"></i></div>
+            <h3>SQL & Databases</h3>
+            <p>PostgreSQL, MySQL, SQL Server. Modélisation relationnelle (schémas en étoile) et optimisation de requêtes complexes.</p>
+        </div>
+
+        <!-- Carte 2: Data Engineering -->
+        <div class="skill-card">
+            <div class="skill-icon"><i class="fa-solid fa-layer-group"></i></div>
+            <h3>Data Engineering</h3>
+            <p>Conception et orchestration de pipelines ETL/ELT fiables, automatisation des flux et structuration de Data Warehouses.</p>
+        </div>
+
+        <!-- Carte 3: Python -->
+        <div class="skill-card">
+            <div class="skill-icon"><i class="fa-brands fa-python"></i></div>
+            <h3>Python Development</h3>
+            <p>Préparation, nettoyage et transformation de volumes de données multi-sources avec Pandas et NumPy.</p>
+        </div>
+
+        <!-- Carte 4: BI -->
+        <div class="skill-card">
+            <div class="skill-icon"><i class="fa-solid fa-chart-column"></i></div>
+            <h3>Business Intelligence</h3>
+            <p>Création de tableaux de bord décisionnels interactifs avec Power BI (DAX, Power Query) et Tableau.</p>
+        </div>
     </div>
 </section>
 
@@ -466,7 +617,7 @@
         </div>
 
         <div class="project-card">
-            <img src="images/airbnb-preview.png" alt="Dashboard Airbnb Paris" class="project-thumb">
+            <img src="images/airbnb-preview.png" alt="Dashboard Airbnb Paris" class="project-thumb dashboard-img">
             <div class="project-body">
                 <div>
                     <div class="project-tags">
@@ -491,7 +642,7 @@
         </div>
 
         <div class="project-card">
-            <img src="images/hr-preview.png" alt="Dashboard Analyse RH" class="project-thumb">
+            <img src="images/hr-preview.png" alt="Dashboard Analyse RH" class="project-thumb dashboard-img">
             <div class="project-body">
                 <div>
                     <div class="project-tags">
